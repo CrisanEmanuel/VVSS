@@ -15,3 +15,113 @@
 2025-02-26 19:04:49 INFO  TaskInfoController:24 - task info window initializing
 2025-02-26 19:04:49 ERROR Controller:127 - error loading task-info.fxml
 2025-02-26 19:04:51 INFO  NewEditController:89 - new/edit window initializing
+2025-03-11 14:23:08 INFO  Main:35 - saved data reading
+2025-03-11 14:23:08 INFO  Main:40 - application start
+2025-03-11 14:23:08 INFO  Controller:74 - Main controller initializing
+2025-03-11 14:23:16 INFO  NewEditController:89 - new/edit window initializing
+2025-03-11 14:23:24 INFO  NewEditController:89 - new/edit window initializing
+2025-03-11 14:23:27 INFO  NewEditController:89 - new/edit window initializing
+2025-03-11 14:23:37 INFO  TaskInfoController:24 - task info window initializing
+2025-03-11 14:23:48 INFO  NewEditController:89 - new/edit window initializing
+2025-03-11 14:28:35 INFO  Main:35 - saved data reading
+2025-03-11 14:28:35 INFO  Main:40 - application start
+2025-03-11 14:28:36 INFO  Controller:74 - Main controller initializing
+2025-03-11 14:28:41 INFO  TaskInfoController:24 - task info window initializing
+2025-03-11 14:28:41 ERROR Controller:127 - error loading task-info.fxml
+2025-03-11 14:28:47 INFO  TaskInfoController:24 - task info window initializing
+2025-03-11 14:31:45 INFO  Main:35 - saved data reading
+2025-03-11 14:31:45 INFO  Main:40 - application start
+2025-03-11 14:31:45 INFO  Controller:74 - Main controller initializing
+2025-03-11 14:31:47 INFO  TaskInfoController:24 - task info window initializing
+2025-03-11 14:31:47 ERROR Controller:127 - error loading task-info.fxml
+2025-03-11 14:32:04 INFO  TaskInfoController:24 - task info window initializing
+2025-03-11 14:35:23 INFO  Main:35 - saved data reading
+2025-03-11 14:35:23 INFO  Main:40 - application start
+2025-03-11 14:35:23 INFO  Controller:74 - Main controller initializing
+2025-03-11 14:36:37 INFO  TaskInfoController:24 - task info window initializing
+2025-03-11 14:36:49 ERROR Controller:127 - error loading task-info.fxml
+2025-03-11 14:36:59 INFO  Main:35 - saved data reading
+2025-03-11 14:36:59 INFO  Main:40 - application start
+2025-03-11 14:36:59 INFO  Controller:74 - Main controller initializing
+2025-03-11 14:37:45 INFO  TaskInfoController:24 - task info window initializing
+2025-03-11 14:47:04 INFO  Main:35 - saved data reading
+2025-03-11 14:47:04 INFO  Main:40 - application start
+2025-03-11 14:47:05 INFO  Controller:74 - Main controller initializing
+2025-03-11 14:47:06 INFO  NewEditController:89 - new/edit window initializing
+2025-03-11 14:47:44 INFO  TaskInfoController:24 - task info window initializing
+2025-03-11 14:50:36 INFO  Main:35 - saved data reading
+2025-03-11 14:50:36 INFO  Main:40 - application start
+2025-03-11 14:50:36 INFO  Controller:74 - Main controller initializing
+2025-03-12 13:59:50 INFO  Main:35 - saved data reading
+2025-03-12 13:59:50 INFO  Main:40 - application start
+2025-03-12 13:59:51 INFO  Controller:74 - Main controller initializing
+2025-03-12 14:00:03 INFO  NewEditController:89 - new/edit window initializing
+2025-03-12 14:01:05 INFO  NewEditController:89 - new/edit window initializing
+2025-03-12 14:01:15 INFO  NewEditController:89 - new/edit window initializing
+2025-03-12 14:01:25 INFO  NewEditController:89 - new/edit window initializing
+2025-03-12 14:01:40 INFO  NewEditController:89 - new/edit window initializing
+2025-03-12 14:02:19 INFO  TaskInfoController:24 - task info window initializing
+2025-03-12 14:02:22 INFO  TaskInfoController:24 - task info window initializing
+2025-03-12 14:02:26 INFO  TaskInfoController:24 - task info window initializing
+2025-03-12 15:14:22 INFO  Main:35 - saved data reading
+2025-03-12 15:14:22 INFO  Main:40 - application start
+2025-03-12 15:14:22 INFO  Controller:74 - Main controller initializing
+2025-03-12 15:14:25 INFO  NewEditController:89 - new/edit window initializing
+2025-03-12 15:14:34 INFO  NewEditController:89 - new/edit window initializing
+2025-03-12 15:14:43 INFO  TaskInfoController:24 - task info window initializing
+2025-03-12 15:35:25 INFO  Main:35 - saved data reading
+2025-03-12 15:35:25 INFO  Main:40 - application start
+2025-03-12 15:35:25 INFO  Controller:74 - Main controller initializing
+2025-03-12 15:35:27 INFO  NewEditController:89 - new/edit window initializing
+2025-03-12 15:35:34 INFO  NewEditController:89 - new/edit window initializing
+2025-03-12 15:35:38 INFO  TaskInfoController:24 - task info window initializing
+2025-03-12 15:39:02 INFO  Main:35 - saved data reading
+2025-03-12 15:39:02 INFO  Main:40 - application start
+2025-03-12 15:39:03 INFO  Controller:74 - Main controller initializing
+2025-03-12 15:39:04 INFO  NewEditController:89 - new/edit window initializing
+2025-03-12 15:39:09 INFO  NewEditController:89 - new/edit window initializing
+2025-03-12 15:39:16 INFO  TaskInfoController:24 - task info window initializing
+2025-03-12 15:40:28 INFO  Main:35 - saved data reading
+2025-03-12 15:40:28 INFO  Main:40 - application start
+2025-03-12 15:40:28 INFO  Controller:74 - Main controller initializing
+2025-03-12 15:40:30 INFO  NewEditController:89 - new/edit window initializing
+2025-03-12 15:40:36 INFO  NewEditController:89 - new/edit window initializing
+2025-03-12 15:40:40 INFO  TaskInfoController:24 - task info window initializing
+2025-03-12 15:41:18 INFO  Main:35 - saved data reading
+2025-03-12 15:41:18 INFO  Main:40 - application start
+2025-03-12 15:41:18 INFO  Controller:74 - Main controller initializing
+2025-03-12 15:41:21 INFO  NewEditController:89 - new/edit window initializing
+2025-03-12 15:41:22 INFO  NewEditController:89 - new/edit window initializing
+2025-03-12 15:41:30 INFO  NewEditController:89 - new/edit window initializing
+2025-03-12 15:41:34 INFO  NewEditController:89 - new/edit window initializing
+2025-03-12 15:41:36 INFO  TaskInfoController:24 - task info window initializing
+2025-03-12 15:41:36 ERROR Controller:127 - error loading task-info.fxml
+2025-03-12 15:41:38 INFO  TaskInfoController:24 - task info window initializing
+2025-03-12 15:41:38 ERROR Controller:127 - error loading task-info.fxml
+2025-03-12 15:41:39 INFO  NewEditController:89 - new/edit window initializing
+2025-03-12 15:43:33 INFO  Main:35 - saved data reading
+2025-03-12 15:43:33 INFO  Main:40 - application start
+2025-03-12 15:43:33 INFO  Controller:74 - Main controller initializing
+2025-03-12 15:43:39 INFO  NewEditController:89 - new/edit window initializing
+2025-03-12 15:43:40 INFO  NewEditController:89 - new/edit window initializing
+2025-03-12 15:43:48 INFO  Main:35 - saved data reading
+2025-03-12 15:43:48 INFO  Main:40 - application start
+2025-03-12 15:43:48 INFO  Controller:74 - Main controller initializing
+2025-03-12 15:43:52 INFO  Main:35 - saved data reading
+2025-03-12 15:43:52 INFO  Main:40 - application start
+2025-03-12 15:43:52 INFO  Controller:74 - Main controller initializing
+2025-03-12 15:46:45 INFO  Main:35 - saved data reading
+2025-03-12 15:46:45 INFO  Main:40 - application start
+2025-03-12 15:46:45 INFO  Controller:75 - Main controller initializing
+2025-03-12 15:47:19 INFO  Main:35 - saved data reading
+2025-03-12 15:47:19 INFO  Main:40 - application start
+2025-03-12 15:47:19 INFO  Controller:75 - Main controller initializing
+2025-03-12 15:47:22 INFO  NewEditController:89 - new/edit window initializing
+2025-03-12 15:49:53 INFO  Main:35 - saved data reading
+2025-03-12 15:49:53 INFO  Main:40 - application start
+2025-03-12 15:49:53 INFO  Controller:75 - Main controller initializing
+2025-03-12 15:49:57 INFO  NewEditController:87 - new/edit window initializing
+2025-03-12 15:53:16 INFO  Main:35 - saved data reading
+2025-03-12 15:53:16 INFO  Main:40 - application start
+2025-03-12 15:53:16 INFO  Controller:75 - Main controller initializing
+2025-03-12 15:53:18 INFO  NewEditController:87 - new/edit window initializing

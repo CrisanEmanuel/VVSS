@@ -7,7 +7,7 @@ import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class Task implements Serializable, Cloneable {
+public class Task implements Serializable {
     private String title;
     private Date time;
     private Date start;
@@ -45,6 +45,19 @@ public class Task implements Serializable, Cloneable {
         this.end = end;
         this.interval = interval;
         this.time = start;
+    }
+
+    public Task(Task other) {
+        this.title = other.title;
+        this.active = other.active;
+        this.time = (other.time != null) ? new Date(other.time.getTime()) : null;
+        this.start = (other.start != null) ? new Date(other.start.getTime()) : null;
+        this.end = (other.end != null) ? new Date(other.end.getTime()) : null;
+        this.interval = other.interval;
+    }
+
+    public static Task copy(Task original) {
+        return new Task(original);
     }
 
     public String getTitle() {
@@ -92,31 +105,66 @@ public class Task implements Serializable, Cloneable {
 
     }
     public boolean isRepeated(){
-        return !(this.interval == 0);
+        return this.interval != 0;
 
     }
-    public Date nextTimeAfter(Date current){
-        if (current.after(end) || current.equals(end))return null;
-        if (isRepeated() && isActive()){
-            Date timeBefore  = start;
-            Date timeAfter = start;
-            if (current.before(start)){
-                return start;
-            }
-            if ((current.after(start) || current.equals(start)) && (current.before(end) || current.equals(end))){
-                for (long i = start.getTime(); i <= end.getTime(); i += interval*1000){
-                    if (current.equals(timeAfter)) return new Date(timeAfter.getTime()+interval*1000);
-                    if (current.after(timeBefore) && current.before(timeAfter)) return timeBefore;//return timeAfter
-                    timeBefore = timeAfter;
-                    timeAfter = new Date(timeAfter.getTime()+ interval*1000);
-                }
-            }
+//    public Date nextTimeAfter(Date current){
+//        if (current.after(end) || current.equals(end))return null;
+//        if (isRepeated() && isActive()) {
+//            Date timeBefore  = start;
+//            Date timeAfter = start;
+//            if (current.before(start)){
+//                return start;
+//            }
+//            if ((current.after(start) || current.equals(start)) && (current.before(end) || current.equals(end))){
+//                for (long i = start.getTime(); i <= end.getTime(); i += interval*1000){
+//                    if (current.equals(timeAfter)) return new Date(timeAfter.getTime()+interval*1000);
+//                    if (current.after(timeBefore) && current.before(timeAfter)) return timeBefore;//return timeAfter
+//                    timeBefore = timeAfter;
+//                    timeAfter = new Date(timeAfter.getTime()+ interval*1000);
+//                }
+//            }
+//        }
+//        if (!isRepeated() && current.before(time) && isActive()){
+//            return time;
+//        }
+//        return null;
+//    }
+
+    public Date nextTimeAfter(Date current) {
+        if (!isActive() || current.after(end) || current.equals(end)) {
+            return null;
         }
-        if (!isRepeated() && current.before(time) && isActive()){
-            return time;
+
+        if (!isRepeated()) {
+            return current.before(time) ? time : null;
+        }
+
+        if (current.before(start)) {
+            return start;
+        }
+
+        return calculateNextRepeatedTime(current);
+    }
+
+    private Date calculateNextRepeatedTime(Date current) {
+        Date timeBefore = start;
+        Date timeAfter = new Date(start.getTime() + interval * 1000);
+
+        while (timeAfter.before(end) || timeAfter.equals(end)) {
+            if (current.equals(timeAfter)) {
+                return new Date(timeAfter.getTime() + interval * 1000);
+            }
+            if (current.after(timeBefore) && current.before(timeAfter)) {
+                return timeAfter;
+            }
+            timeBefore = timeAfter;
+            timeAfter = new Date(timeAfter.getTime() + interval * 1000);
         }
         return null;
     }
+
+
     //duplicate methods for TableView which sets column
     // value by single method and doesn't allow passing parameters
     public String getFormattedDateStart(){
@@ -171,13 +219,14 @@ public class Task implements Serializable, Cloneable {
                 ", active=" + active +
                 '}';
     }
-    @Override
-    protected Task clone() throws CloneNotSupportedException {
-        Task task  = (Task)super.clone();
-        task.time = (Date)this.time.clone();
-        task.start = (Date)this.start.clone();
-        task.end = (Date)this.end.clone();
-        return task;
-    }
+//    @Override
+//    protected Task clone() throws CloneNotSupportedException {
+//        Task task  = (Task)super.clone();
+//        task.time = (Date)this.time.clone();
+//        task.start = (Date)this.start.clone();
+//        task.end = (Date)this.end.clone();
+//        return task;
+//    }
+
 }
 

@@ -1,5 +1,6 @@
 package tasks.controller;
 
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
@@ -33,10 +34,10 @@ public class Controller {
     public static Stage editNewStage;
     public static Stage infoStage;
 
-    public static TableView mainTable;
+    public static TableView<Task> mainTable;
 
     @FXML
-    public  TableView tasks;
+    public TableView<Task> tasks;
     @FXML
     private TableColumn<Task, String> columnTitle;
     @FXML
@@ -127,10 +128,25 @@ public class Controller {
             log.error("error loading task-info.fxml");
         }
     }
+
+    private void showError(String message) {
+        Platform.runLater(() -> {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Eroare");
+            alert.setHeaderText(null);
+            alert.setContentText(message);
+            alert.showAndWait();
+        });
+    }
+
     @FXML
     public void showFilteredTasks(){
         Date start = getDateFromFilterField(datePickerFrom.getValue(), fieldTimeFrom.getText());
         Date end = getDateFromFilterField(datePickerTo.getValue(), fieldTimeTo.getText());
+
+        if (start == null || end == null) {
+            showError("Datele de început și sfârșit nu pot fi goale!");
+        }
 
         Iterable<Task> filtered =  service.filterTasks(start, end);
 
@@ -139,8 +155,13 @@ public class Controller {
         updateCountLabel(observableTasks);
     }
     private Date getDateFromFilterField(LocalDate localDate, String time){
-        Date date = dateService.getDateValueFromLocalDate(localDate);
-        return dateService.getDateMergedWithTime(time, date);
+        try {
+            Date date = dateService.getDateValueFromLocalDate(localDate);
+            return dateService.getDateMergedWithTime(time, date);
+        }catch(Exception e) {
+            System.out.println("Nu e bine :)");
+            return null;
+        }
     }
 
 
