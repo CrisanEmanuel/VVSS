@@ -4,6 +4,7 @@ import javafx.collections.ObservableList;
 import org.apache.log4j.Logger;
 import tasks.model.LinkedTaskList;
 import tasks.model.Task;
+import tasks.model.TaskDTO;
 import tasks.model.TaskList;
 import tasks.view.*;
 
@@ -269,5 +270,46 @@ public class TaskIO {
         catch (IOException e){
             log.error("IO exception reading or writing file");
         }
+    }
+
+    private static Task createTask(String title, Date startDate, Date endDate, Integer newInterval, boolean isActive) {
+        Task result;
+        if (endDate == null || newInterval == null) {
+            if (endDate != null || newInterval != null) {
+                throw new IllegalArgumentException("Invalid combination found, either must of them must be null or none of them");
+            }
+            result = new Task(title, startDate);
+        }
+        else {
+            if (startDate.after(endDate)) {
+                throw new IllegalArgumentException("Start date should be before end");
+            }
+            result = new Task(title, startDate, endDate, newInterval);
+        }
+        result.setActive(isActive);
+        return result;
+    }
+
+    public static void insertTask(TaskDTO newTask, ObservableList<Task> tasks) {
+        Task task = createTask(newTask.getTitle(), newTask.getStartDate(), newTask.getEndDate(), newTask.getInterval(), newTask.isActive());
+        for (Task value : tasks) {
+            if (task.equals(value)) {
+                throw new IllegalArgumentException("The given task already exists in the tasks list!");
+            }
+        }
+        tasks.add(task);
+        rewriteFile(tasks);
+    }
+
+    public static void updateTask(TaskDTO updatedTask, Task previousTask, ObservableList<Task> tasks) {
+        Task task = createTask(updatedTask.getTitle(), updatedTask.getStartDate(), updatedTask.getEndDate(), updatedTask.getInterval(), updatedTask.isActive());
+        for (int i = 0; i < tasks.size(); i++){
+            if (previousTask.equals(tasks.get(i))){
+                tasks.set(i,task);
+                rewriteFile(tasks);
+                return;
+            }
+        }
+        throw new IllegalArgumentException("The selected task doesn't exist in the tasks list!");
     }
 }
