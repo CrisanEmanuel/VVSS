@@ -12,6 +12,7 @@ import java.io.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Objects;
 
 public class TaskIO {
     private static final SimpleDateFormat simpleDateFormat = new SimpleDateFormat("[yyyy-MM-dd HH:mm:ss.SSS]");
@@ -274,9 +275,12 @@ public class TaskIO {
 
     private static Task createTask(String title, Date startDate, Date endDate, Integer newInterval, boolean isActive) {
         Task result;
-        if (endDate == null || newInterval == null) {
+        if (endDate == null || newInterval == null || Objects.equals(title, "")) {
             if (endDate != null || newInterval != null) {
-                throw new IllegalArgumentException("Invalid combination found, either must of them must be null or none of them");
+                throw new IllegalArgumentException("Invalid input");
+            }
+            if (Objects.equals(title, "")) {
+                throw new IllegalArgumentException("Invalid input");
             }
             result = new Task(title, startDate);
         }
