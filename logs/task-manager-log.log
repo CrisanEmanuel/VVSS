@@ -146,3 +146,18 @@
 2025-03-26 19:02:07 ERROR Task:40 - interval < than 1
 2025-03-26 19:02:07 ERROR Task:40 - interval < than 1
 2025-03-26 19:02:07 ERROR Task:40 - interval < than 1
+2025-03-26 19:35:18 INFO  Main:35 - saved data reading
+2025-03-26 19:35:18 INFO  Main:40 - application start
+2025-03-26 19:35:19 INFO  Controller:75 - Main controller initializing
+2025-03-26 19:35:21 INFO  NewEditController:87 - new/edit window initializing
+2025-04-06 20:37:07 INFO  Main:35 - saved data reading
+2025-04-06 20:37:07 INFO  Main:40 - application start
+2025-04-06 20:37:08 INFO  Controller:75 - Main controller initializing
+2025-04-06 20:37:33 INFO  TaskInfoController:24 - task info window initializing
+2025-04-06 21:15:58 INFO  Main:35 - saved data reading
+2025-04-06 21:15:58 INFO  Main:40 - application start
+2025-04-06 21:15:58 INFO  Controller:75 - Main controller initializing
+2025-04-06 21:16:02 INFO  NewEditController:87 - new/edit window initializing
+2025-04-06 21:16:42 INFO  TaskInfoController:24 - task info window initializing
+2025-04-06 21:17:30 INFO  NewEditController:87 - new/edit window initializing
+2025-04-06 21:18:21 INFO  TaskInfoController:24 - task info window initializing

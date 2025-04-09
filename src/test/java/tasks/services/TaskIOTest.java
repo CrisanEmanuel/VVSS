@@ -42,7 +42,7 @@ class TaskIOTest {
         @DisplayName("ECP: Add Valid Task (Title: Meeting, Start: 25-03-2025)")
         void testECP_Valid1(String title, Date startDate) {
             TaskDTO taskDTO = new TaskDTO(title, startDate, null, null, true);
-            assertDoesNotThrow(() -> TaskIO.insertTask(taskDTO, tasks));
+            TaskIO.insertTask(taskDTO, tasks);
             assertEquals(1, tasks.size());
         }
 

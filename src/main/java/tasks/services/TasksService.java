@@ -51,4 +51,12 @@ public class TasksService {
 
         return filtered;
     }
+
+    public void addTask(Task task){
+        tasks.add(task);
+    }
+
+    public Iterable<Task> getTasks(){
+        return tasks.getAll();
+    }
 }
