@@ -1,60 +1,61 @@
 package tasks.model;
 
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.ZoneId;
-import java.time.format.DateTimeFormatter;
-import java.util.Date;
-import java.util.Locale;
+import org.junit.jupiter.api.DisplayName;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class TaskTest {
+import java.util.Date;
 
+class TaskTest {
     private Task task;
+    private Date time;
 
     @BeforeEach
-    void setUp() {
-        try {
-            task=new Task("new task",Task.getDateFormat().parse("2023-02-12 10:10"));
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+    public void setUp() {
+        time = new Date();
+        task = new Task("Test Task", time);
     }
 
     @Test
-    void testTaskCreation() throws ParseException {
-       assert task.getTitle() == "new task";
-        System.out.println(task.getFormattedDateStart());
-        System.out.println(task.getDateFormat().format(Task.getDateFormat().parse("2023-02-12 10:10")));
-       assert task.getFormattedDateStart().equals(task.getDateFormat().format(Task.getDateFormat().parse("2023-02-12 10:10")));
-    }
-
-    @AfterEach
-    void tearDown() {
-    }
-
-    @Test
-    void getTitle() {
+    @DisplayName("Task constructor should initialize properties correctly")
+    public void constructorShouldInitializePropertiesCorrectly() {
+        assertEquals("Test Task", task.getTitle());
+        assertEquals(time, task.getTime());
+        assertEquals(time, task.getStartTime());
+        assertEquals(time, task.getEndTime());
+        assertEquals(0, task.getRepeatInterval());
+        assertFalse(task.isActive());
+        assertFalse(task.isRepeated());
     }
 
     @Test
-    void setTitle() {
+    @DisplayName("Setting task title should update the title property")
+    public void settingTitleShouldUpdateTitleProperty() {
+        task.setTitle("Updated Task");
+        assertEquals("Updated Task", task.getTitle());
     }
 
     @Test
-    void getTime() {
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-        assertEquals("2023-02-12 10:10", sdf.format(task.getTime()));
-        String dateString = "January 2, 2010";
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMMM d, yyyy", Locale.ENGLISH);
-        LocalDate localDate = LocalDate.parse(dateString, formatter);
-        task.setTime(Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant()));
-        assertEquals("2010-01-02 00:00", sdf.format(task.getTime()));
+    @DisplayName("Setting task active state should update active property")
+    public void settingActiveShouldUpdateActiveProperty() {
+        task.setActive(true);
+        assertTrue(task.isActive());
+    }
+
+    @Test
+    @DisplayName("Setting time with interval should make task repeated")
+    public void settingTimeWithIntervalShouldMakeTaskRepeated() {
+        // Test setting time with repeated interval
+        Date start = new Date(time.getTime() + 3600000);
+        Date end = new Date(time.getTime() + 7200000);
+        int interval = 600;
+
+        task.setTime(start, end, interval);
+        assertEquals(start, task.getStartTime());
+        assertEquals(end, task.getEndTime());
+        assertEquals(interval, task.getRepeatInterval());
+        assertTrue(task.isRepeated());
     }
 }

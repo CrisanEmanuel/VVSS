@@ -1,37 +1,39 @@
-package tasks.model;
+package tasks.services;
 
 import javafx.collections.ObservableList;
+import org.apache.log4j.Logger;
+import tasks.model.Task;
 
 import java.util.*;
 
 public class TasksOperations {
-    public ArrayList<Task> tasks;
+    public final List<Task> tasks;
+    private static final Logger log = Logger.getLogger( TasksOperations.class.getName( ) );
+
 
     public TasksOperations(ObservableList<Task> tasksList){
         tasks=new ArrayList<>();
         tasks.addAll(tasksList);
     }
-
     public Iterable<Task> incoming(Date start, Date end){
-        System.out.println(start);
-        System.out.println(end);
-/*1*/   ArrayList<Task> incomingTasks = new ArrayList<>();
-/*2*/       if (end != null && start != null) {
-/*3*/           for (Task t : tasks) {
-/*4*/           Date nextTime = t.nextTimeAfter(start);
-/*5*/               if (nextTime != null && (nextTime.before(end) || nextTime.equals(end))) {
-/*6*/               incomingTasks.add(t);
-                    System.out.println(t.getTitle());
+        log.info(start);
+        log.info(end);
+        ArrayList<Task> incomingTasks = new ArrayList<>();
+        if (end != null && start != null) {
+            for (Task t : tasks) {
+                Date nextTime = t.nextTimeAfter(start);
+                if (nextTime != null && (nextTime.before(end) || nextTime.equals(end))) {
+                    incomingTasks.add(t);
+                    log.info(t.getTitle());
                 }
             }
         }
-/*7*/       if (incomingTasks.isEmpty()) {
-            System.out.println("No task found in the specific range");
-/*8*/       return Collections.emptyList();
+        if (incomingTasks.isEmpty()) {
+            log.info("No tasks found in the specified range.");
+            return Collections.emptyList();
         }
-/*9*/       return incomingTasks;
-/*10*/}
-
+        return incomingTasks;
+    }
     public SortedMap<Date, Set<Task>> calendar( Date start, Date end){
         Iterable<Task> incomingTasks = incoming(start, end);
         TreeMap<Date, Set<Task>> calendar = new TreeMap<>();
@@ -53,4 +55,3 @@ public class TasksOperations {
         return calendar;
     }
 }
-

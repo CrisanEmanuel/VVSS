@@ -1,6 +1,5 @@
 package tasks.controller;
 
-import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
@@ -16,7 +15,7 @@ import javafx.stage.Stage;
 import org.apache.log4j.Logger;
 import tasks.model.Task;
 import tasks.services.DateService;
-import tasks.services.TaskIO;
+import tasks.persistence.TaskFileHandler;
 import tasks.services.TasksService;
 import tasks.view.Main;
 
@@ -34,10 +33,10 @@ public class Controller {
     public static Stage editNewStage;
     public static Stage infoStage;
 
-    public static TableView<Task> mainTable;
+    public static TableView mainTable;
 
     @FXML
-    public TableView<Task> tasks;
+    public  TableView tasks;
     @FXML
     private TableColumn<Task, String> columnTitle;
     @FXML
@@ -55,7 +54,7 @@ public class Controller {
     @FXML
     private TextField fieldTimeTo;
 
-    public void setService(TasksService service){
+    public void setService( TasksService service ){
         this.service=service;
         this.dateService=new DateService(service);
         this.tasksList=service.getObservableList();
@@ -90,14 +89,14 @@ public class Controller {
             editNewStage = new Stage();
             NewEditController.setCurrentStage(editNewStage);
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/new-edit-task.fxml"));
-            Parent root = loader.load();//getClass().getResource("/fxml/new-edit-task.fxml"));
+            Parent root = loader.load();
             NewEditController editCtrl = loader.getController();
             editCtrl.setService(service);
             editCtrl.setTasksList(tasksList);
             editCtrl.setCurrentTask((Task)mainTable.getSelectionModel().getSelectedItem());
             editNewStage.setScene(new Scene(root, 600, 350));
             editNewStage.setResizable(false);
-            editNewStage.initOwner(Main.primaryStage);
+            editNewStage.initOwner( Main.getPrimaryStage( ) );
             editNewStage.initModality(Modality.APPLICATION_MODAL);//??????
             editNewStage.show();
         }
@@ -109,7 +108,7 @@ public class Controller {
     public void deleteTask(){
         Task toDelete = (Task)tasks.getSelectionModel().getSelectedItem();
         tasksList.remove(toDelete);
-        TaskIO.rewriteFile(tasksList);
+        TaskFileHandler.rewriteFile(tasksList);
     }
     @FXML
     public void showDetailedInfo(){
@@ -128,25 +127,10 @@ public class Controller {
             log.error("error loading task-info.fxml");
         }
     }
-
-    private void showError(String message) {
-        Platform.runLater(() -> {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Eroare");
-            alert.setHeaderText(null);
-            alert.setContentText(message);
-            alert.showAndWait();
-        });
-    }
-
     @FXML
     public void showFilteredTasks(){
         Date start = getDateFromFilterField(datePickerFrom.getValue(), fieldTimeFrom.getText());
         Date end = getDateFromFilterField(datePickerTo.getValue(), fieldTimeTo.getText());
-
-        if (start == null || end == null) {
-            showError("Datele de început și sfârșit nu pot fi goale!");
-        }
 
         Iterable<Task> filtered =  service.filterTasks(start, end);
 
@@ -155,13 +139,8 @@ public class Controller {
         updateCountLabel(observableTasks);
     }
     private Date getDateFromFilterField(LocalDate localDate, String time){
-        try {
-            Date date = dateService.getDateValueFromLocalDate(localDate);
-            return dateService.getDateMergedWithTime(time, date);
-        }catch(Exception e) {
-            System.out.println("Nu e bine :)");
-            return null;
-        }
+        Date date = dateService.getDateValueFromLocalDate(localDate);
+        return dateService.getDateMergedWithTime(time, date);
     }
 
 

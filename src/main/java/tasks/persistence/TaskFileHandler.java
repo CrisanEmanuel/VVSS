@@ -1,10 +1,9 @@
-package tasks.services;
+package tasks.persistence;
 
 import javafx.collections.ObservableList;
 import org.apache.log4j.Logger;
 import tasks.model.LinkedTaskList;
 import tasks.model.Task;
-import tasks.model.TaskDTO;
 import tasks.model.TaskList;
 import tasks.view.*;
 
@@ -12,71 +11,66 @@ import java.io.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Objects;
 
-public class TaskIO {
+public class TaskFileHandler {
     private static final SimpleDateFormat simpleDateFormat = new SimpleDateFormat("[yyyy-MM-dd HH:mm:ss.SSS]");
     private static final String[] TIME_ENTITY = {" day"," hour", " minute"," second"};
-    private static final int SECONDS_IN_DAY = 86400;
-    private static final int SECONDS_IN_HOUR = 3600;
-    private static final int SECONDS_IN_MIN = 60;
+    private static final int secondsInDay = 86400;
+    private static final int secondsInHour = 3600;
+    private static final int secondsInMin = 60;
 
-    private TaskIO() {
-        throw new IllegalStateException("Utility class");
-    }
-
-    private static final Logger log = Logger.getLogger(TaskIO.class.getName());
+    private static final Logger log = Logger.getLogger( TaskFileHandler.class.getName());
     public static void write(TaskList tasks, OutputStream out) throws IOException {
-        try (DataOutputStream dataOutputStream = new DataOutputStream(out)) {
-            dataOutputStream.writeInt(tasks.size());
-            for (Task t : tasks) {
-                dataOutputStream.writeInt(t.getTitle().length());
-                dataOutputStream.writeUTF(t.getTitle());
-                dataOutputStream.writeBoolean(t.isActive());
-                dataOutputStream.writeInt(t.getRepeatInterval());
-                if (t.isRepeated()) {
-                    dataOutputStream.writeLong(t.getStartTime().getTime());
-                    dataOutputStream.writeLong(t.getEndTime().getTime());
+        try ( DataOutputStream dataOutputStream = new DataOutputStream( out ) ) {
+            dataOutputStream.writeInt( tasks.size( ) );
+            for ( Task t : tasks ) {
+                dataOutputStream.writeInt( t.getTitle( ).length( ) );
+                dataOutputStream.writeUTF( t.getTitle( ) );
+                dataOutputStream.writeBoolean( t.isActive( ) );
+                dataOutputStream.writeInt( t.getRepeatInterval( ) );
+                if ( t.isRepeated( ) ) {
+                    dataOutputStream.writeLong( t.getStartTime( ).getTime( ) );
+                    dataOutputStream.writeLong( t.getEndTime( ).getTime( ) );
                 } else {
-                    dataOutputStream.writeLong(t.getTime().getTime());
+                    dataOutputStream.writeLong( t.getTime( ).getTime( ) );
                 }
             }
         }
     }
     public static void read(TaskList tasks, InputStream in)throws IOException {
-        try (DataInputStream dataInputStream = new DataInputStream(in)) {
-            int listLength = dataInputStream.readInt();
-            for (int i = 0; i < listLength; i++) {
-                int titleLength = dataInputStream.readInt();
-                String title = dataInputStream.readUTF();
-                boolean isActive = dataInputStream.readBoolean();
-                int interval = dataInputStream.readInt();
-                Date startTime = new Date(dataInputStream.readLong());
+        try ( DataInputStream dataInputStream = new DataInputStream( in ) ) {
+            int listLength = dataInputStream.readInt( );
+            for ( int i = 0; i < listLength; i++ ) {
+                int titleLength = dataInputStream.readInt( );
+                String title = dataInputStream.readUTF( );
+                boolean isActive = dataInputStream.readBoolean( );
+                int interval = dataInputStream.readInt( );
+                Date startTime = new Date( dataInputStream.readLong( ) );
                 Task taskToAdd;
-                if (interval > 0) {
-                    Date endTime = new Date(dataInputStream.readLong());
-                    taskToAdd = new Task(title, startTime, endTime, interval);
+                if ( interval > 0 ) {
+                    Date endTime = new Date( dataInputStream.readLong( ) );
+                    taskToAdd = new Task( title, startTime, endTime, interval );
                 } else {
-                    taskToAdd = new Task(title, startTime);
+                    taskToAdd = new Task( title, startTime );
                 }
-                taskToAdd.setActive(isActive);
-                tasks.add(taskToAdd);
+                taskToAdd.setActive( isActive );
+                tasks.add( taskToAdd );
             }
         }
     }
     public static void writeBinary(TaskList tasks, File file)throws IOException{
-        try (FileOutputStream fos = new FileOutputStream(file)) {
-            write(tasks, fos);
-        } catch (IOException e) {
-            log.error("IO exception reading or writing file");
+        try ( FileOutputStream fos = new FileOutputStream( file ) ) {
+            write( tasks, fos );
+        } catch ( IOException e ) {
+            log.error( "IO exception reading or writing file" );
         }
     }
 
     public static void readBinary(TaskList tasks, File file) throws IOException{
-        try (FileInputStream fis = new FileInputStream(file)) {
-            read(tasks, fis);
-        } catch (IOException e) {
-            log.error("IO exception reading or writing file");
+        try ( FileInputStream fis = new FileInputStream( file ) ) {
+            read( tasks, fis );
+        } catch ( IOException e ) {
+            log.error( "IO exception reading or writing file" );
         }
     }
     public static void write(TaskList tasks, Writer out) throws IOException {
@@ -88,6 +82,7 @@ public class TaskIO {
             bufferedWriter.newLine();
         }
         bufferedWriter.close();
+
     }
 
     public static void read(TaskList tasks, Reader in)  throws IOException {
@@ -102,16 +97,16 @@ public class TaskIO {
 
     }
     public static void writeText(TaskList tasks, File file) throws IOException {
-        try (FileWriter fileWriter = new FileWriter(file)) {
-            write(tasks, fileWriter);
-        } catch (IOException e) {
-            log.error("IO exception reading or writing file");
+        try ( FileWriter fileWriter = new FileWriter( file ) ) {
+            write( tasks, fileWriter );
+        } catch ( IOException e ) {
+            log.error( "IO exception reading or writing file" );
         }
 
     }
     public static void readText(TaskList tasks, File file) throws IOException {
-        try (FileReader fileReader = new FileReader(file)) {
-            read(tasks, fileReader);
+        try ( FileReader fileReader = new FileReader( file ) ) {
+            read( tasks, fileReader );
         }
     }
     //// service methods for reading
@@ -121,13 +116,14 @@ public class TaskIO {
         //Task(String title, Date time)   Task(String title, Date start, Date end, int interval)
         Task result;
         String title = getTitleFromText(line);
-        Date startTime = getDateFromText(line, true);
         if (isRepeated){
+            Date startTime = getDateFromText(line, true);
             Date endTime = getDateFromText(line, false);
             int interval = getIntervalFromText(line);
             result = new Task(title, startTime, endTime, interval);
         }
         else {
+            Date startTime = getDateFromText(line, true);
             result = new Task(title, startTime);
         }
         result.setActive(isActive);
@@ -163,13 +159,13 @@ public class TaskIO {
         int result = 0;
         for (int p = 0; p < timeEntities.length; p++){
             if (timeEntities[p] != 0 && p == 0){
-                result+= SECONDS_IN_DAY *timeEntities[p];
+                result+=secondsInDay*timeEntities[p];
             }
             if (timeEntities[p] != 0 && p == 1){
-                result+= SECONDS_IN_HOUR *timeEntities[p];
+                result+=secondsInHour*timeEntities[p];
             }
             if (timeEntities[p] != 0 && p == 2){
-                result+= SECONDS_IN_MIN *timeEntities[p];
+                result+=secondsInMin*timeEntities[p];
             }
             if (timeEntities[p] != 0 && p == 3){
                 result+=timeEntities[p];
@@ -239,10 +235,10 @@ public class TaskIO {
         if (interval <= 0) throw new IllegalArgumentException("Interval <= 0");
         StringBuilder sb = new StringBuilder();
 
-        int days = interval/ SECONDS_IN_DAY;
-        int hours = (interval - SECONDS_IN_DAY *days) / SECONDS_IN_HOUR;
-        int minutes = (interval - (SECONDS_IN_DAY *days + SECONDS_IN_HOUR *hours)) / SECONDS_IN_MIN;
-        int seconds = (interval - (SECONDS_IN_DAY *days + SECONDS_IN_HOUR *hours + SECONDS_IN_MIN *minutes));
+        int days = interval/secondsInDay;
+        int hours = (interval - secondsInDay*days) / secondsInHour;
+        int minutes = (interval - (secondsInDay*days + secondsInHour*hours)) / secondsInMin;
+        int seconds = (interval - (secondsInDay*days + secondsInHour*hours + secondsInMin*minutes));
 
         int[] time = new int[]{days, hours, minutes, seconds};
         int i = 0, j = time.length-1;
@@ -266,54 +262,10 @@ public class TaskIO {
             taskList.add(t);
         }
         try {
-            TaskIO.writeBinary(taskList, Main.savedTasksFile);
+            TaskFileHandler.writeBinary(taskList, Main.savedTasksFile);
         }
         catch (IOException e){
             log.error("IO exception reading or writing file");
         }
-    }
-
-    private static Task createTask(String title, Date startDate, Date endDate, Integer newInterval, boolean isActive) {
-        Task result;
-        if (endDate == null || newInterval == null || Objects.equals(title, "")) {
-            if (endDate != null || newInterval != null) {
-                throw new IllegalArgumentException("Invalid input");
-            }
-            if (Objects.equals(title, "")) {
-                throw new IllegalArgumentException("Invalid input");
-            }
-            result = new Task(title, startDate);
-        }
-        else {
-            if (startDate.after(endDate)) {
-                throw new IllegalArgumentException("Start date should be before end");
-            }
-            result = new Task(title, startDate, endDate, newInterval);
-        }
-        result.setActive(isActive);
-        return result;
-    }
-
-    public static void insertTask(TaskDTO newTask, ObservableList<Task> tasks) {
-        Task task = createTask(newTask.getTitle(), newTask.getStartDate(), newTask.getEndDate(), newTask.getInterval(), newTask.isActive());
-        for (Task value : tasks) {
-            if (task.equals(value)) {
-                throw new IllegalArgumentException("The given task already exists in the tasks list!");
-            }
-        }
-        tasks.add(task);
-        rewriteFile(tasks);
-    }
-
-    public static void updateTask(TaskDTO updatedTask, Task previousTask, ObservableList<Task> tasks) {
-        Task task = createTask(updatedTask.getTitle(), updatedTask.getStartDate(), updatedTask.getEndDate(), updatedTask.getInterval(), updatedTask.isActive());
-        for (int i = 0; i < tasks.size(); i++){
-            if (previousTask.equals(tasks.get(i))){
-                tasks.set(i,task);
-                rewriteFile(tasks);
-                return;
-            }
-        }
-        throw new IllegalArgumentException("The selected task doesn't exist in the tasks list!");
     }
 }
