@@ -362,3 +362,52 @@
 2025-04-30 11:50:55 INFO  TasksOperations:19 - Wed Apr 30 11:50:55 EEST 2025
 2025-04-30 11:50:55 INFO  TasksOperations:20 - Thu May 01 11:50:55 EEST 2025
 2025-04-30 11:50:55 INFO  TasksOperations:32 - No tasks found in the specified range.
+2025-04-30 11:54:51 INFO  TasksOperations:19 - Wed Apr 30 11:54:51 EEST 2025
+2025-04-30 11:54:51 INFO  TasksOperations:20 - Wed Apr 30 14:41:31 EEST 2025
+2025-04-30 11:54:51 INFO  TasksOperations:27 - Integration Test Task 1
+2025-04-30 11:54:51 INFO  TasksOperations:27 - Integration Test Task 2
+2025-04-30 11:55:18 INFO  TasksOperations:19 - Fri Apr 21 12:30:18 EEST 2000
+2025-04-30 11:55:18 INFO  TasksOperations:20 - Sun Apr 30 12:30:18 EEST 2000
+2025-04-30 11:55:18 INFO  TasksOperations:27 - Task2
+2025-04-30 11:55:18 INFO  TasksOperations:27 - Task2
+2025-04-30 11:55:18 INFO  TasksOperations:19 - 
+2025-04-30 11:55:18 INFO  TasksOperations:20 - 
+2025-04-30 11:55:18 INFO  TasksOperations:32 - No tasks found in the specified range.
+2025-04-30 11:55:18 INFO  TasksOperations:19 - 
+2025-04-30 11:55:18 INFO  TasksOperations:20 - Sat Apr 22 12:30:18 EEST 2000
+2025-04-30 11:55:18 INFO  TasksOperations:32 - No tasks found in the specified range.
+2025-04-30 11:55:18 INFO  TasksOperations:19 - Wed Apr 26 12:30:18 EEST 2000
+2025-04-30 11:55:18 INFO  TasksOperations:20 - Thu Apr 27 12:30:18 EEST 2000
+2025-04-30 11:55:18 INFO  TasksOperations:32 - No tasks found in the specified range.
+2025-04-30 11:55:18 INFO  TasksOperations:19 - Sat Apr 15 12:30:18 EEST 2000
+2025-04-30 11:55:18 INFO  TasksOperations:20 - Thu Apr 20 12:30:18 EEST 2000
+2025-04-30 11:55:18 INFO  TasksOperations:32 - No tasks found in the specified range.
+2025-04-30 11:55:18 INFO  TasksOperations:19 - Sat Apr 22 12:30:18 EEST 2000
+2025-04-30 11:55:18 INFO  TasksOperations:20 - 
+2025-04-30 11:55:18 INFO  TasksOperations:32 - No tasks found in the specified range.
+2025-04-30 11:55:18 INFO  TasksOperations:19 - Mon Apr 17 12:30:18 EEST 2000
+2025-04-30 11:55:18 INFO  TasksOperations:20 - Wed Apr 26 12:30:18 EEST 2000
+2025-04-30 11:55:18 INFO  TasksOperations:27 - Task1
+2025-04-30 11:55:18 INFO  TasksOperations:19 - Mon Apr 17 12:30:18 EEST 2000
+2025-04-30 11:55:18 INFO  TasksOperations:20 - Wed Apr 26 12:30:18 EEST 2000
+2025-04-30 11:55:18 INFO  TasksOperations:27 - Task1
+2025-04-30 11:55:18 INFO  TasksOperations:27 - Task2
+2025-04-30 11:55:29 ERROR Task:47 - title is empty
+2025-04-30 11:55:29 ERROR Task:51 - time below bound
+2025-04-30 11:55:29 ERROR Task:51 - time below bound
+2025-04-30 11:55:29 ERROR Task:55 - interval < than 1
+2025-04-30 11:55:29 ERROR Task:55 - interval < than 1
+2025-04-30 11:55:29 ERROR Task:55 - interval < than 1
+2025-04-30 11:55:29 ERROR Task:51 - time below bound
+2025-04-30 11:55:29 ERROR Task:51 - time below bound
+2025-04-30 11:55:39 ERROR Task:47 - title is empty
+2025-04-30 11:55:39 ERROR Task:51 - time below bound
+2025-04-30 11:55:39 ERROR Task:51 - time below bound
+2025-04-30 11:55:39 ERROR Task:55 - interval < than 1
+2025-04-30 11:55:39 ERROR Task:55 - interval < than 1
+2025-04-30 11:55:39 ERROR Task:55 - interval < than 1
+2025-04-30 11:55:39 ERROR Task:51 - time below bound
+2025-04-30 11:55:39 ERROR Task:51 - time below bound
+2025-04-30 11:55:51 INFO  TasksOperations:19 - Wed Apr 30 11:55:51 EEST 2025
+2025-04-30 11:55:51 INFO  TasksOperations:20 - Thu May 01 11:55:51 EEST 2025
+2025-04-30 11:55:51 INFO  TasksOperations:32 - No tasks found in the specified range.
