@@ -12,7 +12,7 @@
 <p style="text-align: center;"><img alt="TestLink logo" title="configure using $tlCfg->document_generator->company_logo"  width= height= src="https://www.scs.ubbcluj.ro/testlink/gui/themes/default/images/tl-logo-transparent-25.png" /></p></div>
 <div class="doc_title"><p>Test Specification</p></div>
 <div class="doc_title" style="text-align:left;margin: auto;"><p>Test Project: Proiect232<br/>Test Suite: Proiect232 - ceir3320_BBT</p></div>
-<div class="summary"><p id="printedby">Printed by TestLink on 25/03/2025</p></div>
+<div class="summary"><p id="printedby">Printed by TestLink on 30/04/2025</p></div>
 <div class="pagefooter" id="copyright">2012 &copy; TestLink Community</div>
 <h1 class="general" style="page-break-before: always">Table Of Contents</h1><div class="toc"><p style="padding-left: 20px;"><b><a href="#toc_1">1.ceir3320_BBT</a></b></p>
 <p style="padding-left: 45px;"><a href="#toc_tc23923">Prj232-17: ECP_ValidTest</a></p><p style="padding-left: 45px;"><a href="#toc_tc23928">Prj232-19: ECP_InvalidTest</a></p><p style="padding-left: 45px;"><a href="#toc_tc23933">Prj232-21: BVA_ValidTest</a></p><p style="padding-left: 45px;"><a href="#toc_tc23935">Prj232-22: BVA_InvalidTest</a></p></div><h1 class="doclevel" >Scope</h1>
@@ -22,111 +22,70 @@
 <div><p>Se testeaza adaugarea unui task.</p>
 </div><a name="toc_tc23923"></a><p>&nbsp;</p><div> <table class="tc" width="90%" ><tr><th colspan="4">Test Case Prj232-17: ECP_ValidTest&nbsp;<span style="font-size: 80%;">[Version  : 1]</span></th></tr>
 <tr><td width="20%" valign="top"><span class="label">Author:</span></td><td colspan="3">ceir3320</td></tr>
-<tr><td colspan="4"><span class="label">Summary:</span><br /><p><strong>Input:</strong></p>
+<tr><td colspan="4"><span class="label">Summary:</span><br /><p>Se adauga un task in care data de start este mai mare de 1 ian 1970</p>
+</td></tr><tr><td colspan="4"><span class="label">Preconditions:</span><br /><p>startDate &gt; 1970-01-01</p>
 
-<ul>
-	<li>
-	<p>Titlu: &quot;Meeting&quot; (sir de caractere valid)</p>
-	</li>
-	<li>
-	<p>Data și ora de &icirc;nceput: 25.03.2025, 10:00 (data si ora&nbsp;valide)</p>
-	</li>
-	<li>
-	<p>Stare: Activ (valoare valida)</p>
-	</li>
-	<li>
-	<p>Repetitiv: Nu</p>
-	</li>
-</ul>
-</td></tr><tr><td colspan="4"><span class="label">Preconditions:</span><br /><p>formatul datei trebuie sa fie corect</p>
+<p>restul campurilor sunt valide</p>
 </td></tr><tr><td width="20%" valign="top"><span class="label">Execution type:</span></td><td colspan="3">Automated</td></tr>
 <tr><td width="20%" valign="top"><span class="label">Estimated exec. duration (min):</span></td><td colspan="3"></td></tr>
 <tr><td width="20%" valign="top"><span class="label">Importance:</span></td><td colspan="3">Medium</td></tr>
-<tr><td colspan="4"></td></tr><tr><td > name of the autotest class:</td><td  colspan = "3" >TestAddTask</td></tr>
-<tr><td > name of the test method:</td><td  colspan = "3" >addValidTaskEcp</td></tr>
-<tr><td width="20%" valign="top"><span class="label">Requirements</span><td colspan="3">ceir3320_F01:  Adaugare task [Version : 1]<br /></td></tr>
+<tr><td colspan="4"></td></tr><tr><td > name of the autotest class:</td><td  colspan = "3" >tasks.services.TasksServiceLab2Test</td></tr>
+<tr><td > name of the test method:</td><td  colspan = "3" >tasks.services.TasksServiceLab2Test#testAddTask_EcpValidTestCase</td></tr>
+<tr><td width="20%" valign="top"><span class="label">Requirements</span><td colspan="3">&nbsp;None<br /></td></tr>
 <tr><td width="20%" valign="top"><span class="label">Keywords:</span></td><td colspan="3">&nbsp;None<br/></td></tr>
 </table>
 </div>
 <a name="toc_tc23928"></a><p>&nbsp;</p><div> <table class="tc" width="90%" ><tr><th colspan="4">Test Case Prj232-19: ECP_InvalidTest&nbsp;<span style="font-size: 80%;">[Version  : 1]</span></th></tr>
 <tr><td width="20%" valign="top"><span class="label">Author:</span></td><td colspan="3">ceir3320</td></tr>
-<tr><td colspan="4"><span class="label">Summary:</span><br /><p><strong>Input:</strong></p>
+<tr><td colspan="4"><span class="label">Summary:</span><br /><p>Se adauga un task in care data de start este mai mica decat 1 ian 1970</p>
+</td></tr><tr><td colspan="4"><span class="label">Preconditions:</span><br /><p>startDate &lt; 1970-01-01</p>
 
-<ul>
-	<li>
-	<p>Titlu: &quot;&quot; (șir gol)</p>
-	</li>
-	<li>
-	<p>Data și ora de &icirc;nceput: 25.03.2025, 10:00</p>
-	</li>
-	<li>
-	<p>Stare: Activ</p>
-	</li>
-	<li>
-	<p>Repetitiv: Nu</p>
-	</li>
-</ul>
-</td></tr><tr><td colspan="4"><span class="label">Preconditions:</span><br /><p>Sistemul trebuie sa&nbsp;valideze ca&nbsp;titlul nu este gol inainte de a salva task-ul.</p>
+<p>restul campurilor sunt valide</p>
 </td></tr><tr><td width="20%" valign="top"><span class="label">Execution type:</span></td><td colspan="3">Automated</td></tr>
 <tr><td width="20%" valign="top"><span class="label">Estimated exec. duration (min):</span></td><td colspan="3"></td></tr>
 <tr><td width="20%" valign="top"><span class="label">Importance:</span></td><td colspan="3">Medium</td></tr>
-<tr><td colspan="4"></td></tr><tr><td > name of the autotest class:</td><td  colspan = "3" >TestAddTask</td></tr>
-<tr><td > name of the test method:</td><td  colspan = "3" >addInvalidTaskEcp</td></tr>
+<tr><td colspan="4"></td></tr><tr><td > name of the autotest class:</td><td  colspan = "3" >tasks.services.TasksServiceLab2Test</td></tr>
+<tr><td > name of the test method:</td><td  colspan = "3" >tasks.services.TasksServiceLab2Test#testAddTask_EcpInvalidTestCase_InvalidStartDate</td></tr>
 <tr><td width="20%" valign="top"><span class="label">Requirements</span><td colspan="3">ceir3320_F01:  Adaugare task [Version : 1]<br /></td></tr>
 <tr><td width="20%" valign="top"><span class="label">Keywords:</span></td><td colspan="3">&nbsp;None<br/></td></tr>
 </table>
 </div>
 <a name="toc_tc23933"></a><p>&nbsp;</p><div> <table class="tc" width="90%" ><tr><th colspan="4">Test Case Prj232-21: BVA_ValidTest&nbsp;<span style="font-size: 80%;">[Version  : 1]</span></th></tr>
 <tr><td width="20%" valign="top"><span class="label">Author:</span></td><td colspan="3">ceir3320</td></tr>
-<tr><td colspan="4"><span class="label">Summary:</span><br /><p><strong>Input:</strong></p>
-
-<ul>
-	<li>
-	<p>Data si ora de &icirc;nceput: 01.01.2025, 00:00 (limita inferioară validă)</p>
-	</li>
-	<li>
-	<p>Data si ora de sfarsit: 01.01.2025, 00:01 (cea mai mică durată validă)</p>
-	</li>
-</ul>
+<tr><td colspan="4"><span class="label">Summary:</span><br /><p>Se adauga un task in care intervalul este fix 1</p>
 </td></tr><tr><td colspan="4"><span class="label">Preconditions:</span><br /><ul>
 	<li>
-	<p>Data de inceput si data de sfarsit trebuie sa&nbsp;fie &icirc;ntr-un interval valid definit de sistem</p>
+	<p>interval este 1</p>
 	</li>
 	<li>
-	<p>Formatul datelor trebuie sa&nbsp;fie corect.</p>
+	<p>restul campurilor sunt valide</p>
 	</li>
 </ul>
 </td></tr><tr><td width="20%" valign="top"><span class="label">Execution type:</span></td><td colspan="3">Automated</td></tr>
 <tr><td width="20%" valign="top"><span class="label">Estimated exec. duration (min):</span></td><td colspan="3"></td></tr>
 <tr><td width="20%" valign="top"><span class="label">Importance:</span></td><td colspan="3">Medium</td></tr>
-<tr><td colspan="4"></td></tr><tr><td > name of the autotest class:</td><td  colspan = "3" >TestAddTask</td></tr>
-<tr><td > name of the test method:</td><td  colspan = "3" >addTaskValidBva</td></tr>
+<tr><td colspan="4"></td></tr><tr><td > name of the autotest class:</td><td  colspan = "3" >tasks.services.TasksServiceLab2Test</td></tr>
+<tr><td > name of the test method:</td><td  colspan = "3" >tasks.services.TasksServiceLab2Test#testAdd_BvaValidTasks</td></tr>
 <tr><td width="20%" valign="top"><span class="label">Requirements</span><td colspan="3">ceir3320_F01:  Adaugare task [Version : 1]<br /></td></tr>
 <tr><td width="20%" valign="top"><span class="label">Keywords:</span></td><td colspan="3">&nbsp;None<br/></td></tr>
 </table>
 </div>
 <a name="toc_tc23935"></a><p>&nbsp;</p><div> <table class="tc" width="90%" ><tr><th colspan="4">Test Case Prj232-22: BVA_InvalidTest&nbsp;<span style="font-size: 80%;">[Version  : 1]</span></th></tr>
 <tr><td width="20%" valign="top"><span class="label">Author:</span></td><td colspan="3">ceir3320</td></tr>
-<tr><td colspan="4"><span class="label">Summary:</span><br /><p><strong>Input:</strong></p>
-
-<ul>
-	<li>
-	<p>Data și ora de &icirc;nceput: 01.01.2025, 00:00</p>
-	</li>
-	<li>
-	<p>Data și ora de sf&acirc;rșit: 31.12.2024, 23:59 (valori la limita, dar intr-un interval invalid &ndash; sfarsitul este inainte de inceput)</p>
-	</li>
-</ul>
+<tr><td colspan="4"><span class="label">Summary:</span><br /><p>se adauga un task in care intervalul este mai mic de 1</p>
 </td></tr><tr><td colspan="4"><span class="label">Preconditions:</span><br /><ul>
 	<li>
-	<p>Formatul datelor trebuie sa&nbsp;fie corect</p>
+	<p>interval &lt; 1</p>
+	</li>
+	<li>
+	<p>restul campurilor sunt valide</p>
 	</li>
 </ul>
 </td></tr><tr><td width="20%" valign="top"><span class="label">Execution type:</span></td><td colspan="3">Automated</td></tr>
 <tr><td width="20%" valign="top"><span class="label">Estimated exec. duration (min):</span></td><td colspan="3"></td></tr>
 <tr><td width="20%" valign="top"><span class="label">Importance:</span></td><td colspan="3">Medium</td></tr>
-<tr><td colspan="4"></td></tr><tr><td > name of the autotest class:</td><td  colspan = "3" >TestAddTask</td></tr>
-<tr><td > name of the test method:</td><td  colspan = "3" >addTaskInvalidBva</td></tr>
+<tr><td colspan="4"></td></tr><tr><td > name of the autotest class:</td><td  colspan = "3" >tasks.services.TasksServiceLab2Test</td></tr>
+<tr><td > name of the test method:</td><td  colspan = "3" >tasks.services.TasksServiceLab2Test#testAddTask_BvaInvalidTestCase</td></tr>
 <tr><td width="20%" valign="top"><span class="label">Requirements</span><td colspan="3">ceir3320_F01:  Adaugare task [Version : 1]<br /></td></tr>
 <tr><td width="20%" valign="top"><span class="label">Keywords:</span></td><td colspan="3">&nbsp;None<br/></td></tr>
 </table>
