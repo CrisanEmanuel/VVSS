@@ -21,28 +21,31 @@
 
   <dependencies>
     <dependency>
+      <groupId>org.mockito</groupId>
+      <artifactId>mockito-core</artifactId>
+      <version>2.23.0</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.mockito</groupId>
+      <artifactId>mockito-junit-jupiter</artifactId>
+      <version>2.23.0</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter-engine</artifactId>
       <version>5.6.0</version>
-      <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter-api</artifactId>
       <version>5.6.0</version>
-      <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter-params</artifactId>
       <version>5.6.0</version>
-      <scope>test</scope>
-    </dependency>
-
-    <dependency>
-      <groupId>org.openjfx</groupId>
-      <artifactId>javafx-base</artifactId>
-      <version>14-ea+4</version>
     </dependency>
     <dependency>
       <groupId>org.openjfx</groupId>
@@ -51,8 +54,13 @@
     </dependency>
     <dependency>
       <groupId>org.openjfx</groupId>
-      <artifactId>javafx-controls</artifactId>
+      <artifactId>javafx-base</artifactId>
       <version>14-ea+4</version>
+    </dependency>
+    <dependency>
+      <groupId>org.openjfx</groupId>
+      <artifactId>javafx-controls</artifactId>
+      <version>11.0.2</version>
     </dependency>
     <dependency>
       <groupId>org.openjfx</groupId>
@@ -84,23 +92,12 @@
       <artifactId>controlsfx</artifactId>
       <version>11.0.1</version>
     </dependency>
-    <dependency>
-      <groupId>org.mockito</groupId>
-      <artifactId>mockito-core</artifactId>
-      <version>5.3.1</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.mockito</groupId>
-      <artifactId>mockito-junit-jupiter</artifactId>
-      <version>5.3.1</version>
-      <scope>test</scope>
-    </dependency>
   </dependencies>
 
   <build>
-    <!--<pluginManagement>--><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
+    <!--    <pluginManagement> &lt;!&ndash; lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) &ndash;&gt;-->
     <plugins>
+      <!-- clean lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#clean_Lifecycle -->
       <plugin>
         <artifactId>maven-clean-plugin</artifactId>
         <version>3.1.0</version>
@@ -112,18 +109,11 @@
       </plugin>
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.10.1</version>
-        <configuration>
-          <source>1.8</source>
-          <target>1.8</target>
-        </configuration>
+        <version>3.6.1</version>
       </plugin>
       <plugin>
         <artifactId>maven-surefire-plugin</artifactId>
         <version>2.22.1</version>
-        <configuration>
-          <!--                <failIfNoTests>false</failIfNoTests>-->
-        </configuration>
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -133,6 +123,11 @@
       <plugin>
         <artifactId>maven-jar-plugin</artifactId>
         <version>3.0.2</version>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-plugin-plugin</artifactId>
+        <version>3.10.2</version>
       </plugin>
       <plugin>
         <artifactId>maven-install-plugin</artifactId>
@@ -151,7 +146,6 @@
         <artifactId>maven-project-info-reports-plugin</artifactId>
         <version>3.0.0</version>
       </plugin>
-
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>exec-maven-plugin</artifactId>
@@ -167,18 +161,8 @@
           <mainClass>tasks.view.Main</mainClass>
         </configuration>
       </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <configuration>
-          <source>9</source>
-          <target>9</target>
-        </configuration>
-      </plugin>
-
     </plugins>
-    <!--</pluginManagement>-->
-
+    <!--    </pluginManagement>-->
   </build>
 
   <pluginRepositories>
@@ -206,5 +190,4 @@
       </snapshots>
     </repository>
   </repositories>
-
 </project>

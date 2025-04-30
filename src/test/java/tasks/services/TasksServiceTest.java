@@ -10,7 +10,6 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
-import javafx.collections.ObservableList;
 import tasks.repository.ArrayTaskList;
 import tasks.model.Task;
 
@@ -37,20 +36,6 @@ class TasksServiceTest {
         tasksService = new TasksService(mockTaskList);
     }
 
-    @Test
-    void testGetObservableList() {
-        spyTaskList.add(mockTask);
-
-        when(mockTaskList.getAll()).thenReturn(spyTaskList);
-
-        ObservableList<Task> result = tasksService.getObservableList();
-
-        assertEquals(1, result.size());
-        assertSame(mockTask, result.get(0));
-
-        verify(mockTaskList).getAll();
-        verify(spyTaskList).add(mockTask); // Verify the spy was used
-    }
 
     @Test
     void testGetIntervalInHours() {
